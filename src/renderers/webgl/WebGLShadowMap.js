@@ -47,7 +47,11 @@ THREE.WebGLShadowMap = function ( _renderer, _lights, _objects, capabilities ) {
 
 	// init
 
-	var depthMaterialTemplate = new THREE.MeshDepthMaterial();
+	var depthMaterialTemplate = new THREE.MeshDepthMaterial({
+		defines: {
+			USE_SHADOWMAP: 1
+		}
+	});
 	depthMaterialTemplate.depthPacking = THREE.RGBADepthPacking;
 	depthMaterialTemplate.clipping = true;
 
@@ -67,7 +71,7 @@ THREE.WebGLShadowMap = function ( _renderer, _lights, _objects, capabilities ) {
 
 		var distanceMaterial = new THREE.ShaderMaterial( {
 			defines: {
-				'USE_SHADOWMAP': ''
+				USE_SHADOWMAP: 1
 			},
 			uniforms: distanceUniforms,
 			vertexShader: distanceShader.vertexShader,
