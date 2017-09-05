@@ -9,8 +9,15 @@
 #include <uv_pars_fragment>
 #include <map_pars_fragment>
 #include <alphamap_pars_fragment>
-#include <logdepthbuf_pars_fragment>
+
+#ifndef USE_SHADOWMAP
+	
+	#include <logdepthbuf_pars_fragment>
+
+#endif
+
 #include <clipping_planes_pars_fragment>
+
 
 void main() {
 
@@ -27,8 +34,13 @@ void main() {
 	#include <map_fragment>
 	#include <alphamap_fragment>
 	#include <alphatest_fragment>
+	
 
-	#include <logdepthbuf_fragment>
+	#ifndef USE_SHADOWMAP
+	
+		#include <logdepthbuf_fragment>
+	
+	#endif
 
 	#if DEPTH_PACKING == 3200
 
